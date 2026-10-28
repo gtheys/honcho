@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- `POST /scopes/{scope_id}/sessions/remove` removes up to 100 sessions from a scope in one request, mirroring bulk add. The batch is all-or-nothing: if any named session doesn't exist it returns 404 and no membership changes. Sessions that aren't members are ignored, and only sessions whose membership actually ended get a `scope_removal` reconciliation task, so a stray ID can't clear the scope's dream notes. Memberships are locked in session order, so it can't deadlock against a concurrent bulk add of the same sessions
+
 ### Changed
 
 - Langfuse Python SDK upgraded from 4.6.1 to 5.0.2, which sends traces on the Langfuse v4 ingestion path ahead of Langfuse Cloud's v4 cutover on 2026-11-16. Self-hosted Langfuse must be v4.59.0 or later; a v3 server no longer receives Honcho's traces. Observation metadata values are now JSON-encoded on the span (`"honcho"` rather than `honcho`), so saved Langfuse metadata filters written against the old shape may need updating. Trace names, user ids and the trace tree are unchanged

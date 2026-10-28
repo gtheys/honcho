@@ -595,6 +595,20 @@ class Scope(BaseModel):
     )
 
 
+class ScopeSessionsRemove(BaseModel):
+    """Schema for removing sessions from a scope."""
+
+    session_ids: list[str] = Field(
+        ...,
+        min_length=1,
+        max_length=100,
+        description=(
+            "IDs of existing sessions to remove from the scope. Sessions that "
+            "are not members are ignored."
+        ),
+    )
+
+
 class ScopeSessionsAdd(BaseModel):
     """Schema for adding sessions to a scope."""
 

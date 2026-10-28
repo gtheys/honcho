@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- `scope.removeSessions()` removes up to 100 sessions from a scope in one request. All-or-nothing if any session doesn't exist; sessions that aren't members are ignored. Requires a Honcho server with `POST /scopes/{scope_id}/sessions/remove`
+
 ## [2.7.0] - 2026-10-20
 
 ### Added

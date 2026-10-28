@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- `Scope.remove_sessions()` (sync and async) removes up to 100 sessions from a scope in one request. All-or-nothing if any session doesn't exist; sessions that aren't members are ignored. Requires a Honcho server with `POST /scopes/{scope_id}/sessions/remove`
+
 ### Security
 
 - Requires `certifi` 2026.10.19 or newer, the first CA bundle without the emSign root behind the compromised eMudhra intermediates. The client verifies TLS with httpx's default, which reads certifi, so upgrading the SDK now upgrades the bundle in the app's environment too. An app that pins an older `certifi` must raise that pin to upgrade
