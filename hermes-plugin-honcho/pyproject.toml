@@ -14,12 +14,6 @@ dependencies = [
 
 # Not installed by Hermes: `uv run --group test pytest tests` from this directory runs the unit suite
 # against a pinned Hermes, whose core modules (agent.*, hermes_cli.*, tools.*) the plugin imports.
-[dependency-groups]
-test = [
-    "pytest==9.1.1",
-    "pytest-asyncio==1.3.0",
-]
-
 [tool.uv]
 package = false
 # Hermes' setup.py refuses wheel builds outside its Nix derivation (`HERMES_NIX_BUILD=1`) because
